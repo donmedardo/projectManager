@@ -12,7 +12,8 @@ export class TaskComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.tasks =[{'projectName':'test','nameTask':'task','time':12}]
+    let myItem:Task[] = JSON.parse(localStorage.getItem('tasks'));
+    this.tasks = myItem;
   }
 
 }

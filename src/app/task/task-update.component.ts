@@ -9,31 +9,43 @@ import { map }                from 'rxjs/operators';
 })
 export class TaskUpdateComponent implements OnInit {
 
-  task:Task;
+  task:Task=new Task('','','');
 
-  constructor(private activatedRoute: ActivatedRoute) { }
+  constructor(private activatedRoute: ActivatedRoute) { this.task= new Task('','','');}
 
   ngOnInit() {
+    this.task= new Task('','','');
     this.activatedRoute
       .queryParamMap.subscribe(params=>{
         console.info (params.get('task')) 
-        this.task = JSON.parse(params.get('task'))
+        if(params.get('task')){
+            this.task = JSON.parse(params.get('task'))
+        }
       } )
-    //   .pipe(map(params => 
-    //     params.get('task') || 'None'));
+    
+  }
 
-     
-    // this.activatedRoute.data.subscribe(({ task }) => {
-    //     console.info(task)
-    //     this.task = task;
-    // });
+  public save(){
+    let myItem:Task[] = localStorage.getItem('tasks')? JSON.parse(localStorage.getItem('tasks')):[];
+
+    myItem.push(this.task)
+    localStorage.setItem('tasks', JSON.stringify(myItem));
+
   }
 
 }
 
 class Task{
-  projectName;
-  nameTask;
-  time;
+
+  projectName: String;
+  nameTask: String;
+  time: String;
+
+  constructor(projectName,nameTask,time){
+    this.projectName = projectName?projectName:'';
+    this.nameTask = nameTask?nameTask:'';
+    this.time = time?time:'';
+  }
+  
 
 }
