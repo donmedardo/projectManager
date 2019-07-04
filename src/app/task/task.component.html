@@ -1,0 +1,43 @@
+<div>
+
+    <h2 id="page-heading">
+        <button id="jh-create-entity" class="btn btn-primary float-right" [routerLink]="['/taskUpdate/new']">
+            <span>
+                Crear Tarea</span>
+        </button>
+    </h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Nombre del Projecto</th>
+                <th scope="col">Nombre de la tarea</th>
+                <th scope="col">tiempo</th>
+                <th scope="col">Accion</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let task of tasks">
+                <td>{{task.projectName}}</td>
+                <td>{{task.nameTask}}</td>
+                <td>{{task.time}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit" [routerLink]="['/taskUpdate']" [queryParams]="{task:task | json }"
+                            class="btn btn-primary btn-sm">
+                            <span class="d-none d-md-inline">Editar</span>
+                        </button>
+                    </div>&nbsp;
+                    <div class="btn-group flex-btn-group-container">
+                            <button type="submit" [routerLink]="['/taskUpdate']"[queryParams]="{task:task | json }"
+                                class="btn btn-primary btn-sm">
+                                <span class="d-none d-md-inline">Borrar</span>
+                            </button>
+                        </div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+
+</div>
