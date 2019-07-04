@@ -19,6 +19,7 @@ export class TaskComponent implements OnInit {
 }
 
 class Task{
+  id:Number;
   projectName;
   nameTask;
   time;

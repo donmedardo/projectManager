@@ -27,7 +27,7 @@ export class TaskUpdateComponent implements OnInit {
 
   public save(){
     let myItem:Task[] = localStorage.getItem('tasks')? JSON.parse(localStorage.getItem('tasks')):[];
-
+    this.task.id=myItem.length;
     myItem.push(this.task)
     localStorage.setItem('tasks', JSON.stringify(myItem));
 
@@ -37,6 +37,7 @@ export class TaskUpdateComponent implements OnInit {
 
 class Task{
 
+  id:Number;
   projectName: String;
   nameTask: String;
   time: String;
