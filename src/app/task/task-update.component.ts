@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { map }                from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-task-update',
@@ -11,7 +12,7 @@ export class TaskUpdateComponent implements OnInit {
 
   task:Task=new Task('','','');
 
-  constructor(private activatedRoute: ActivatedRoute) { this.task= new Task('','','');}
+  constructor(private activatedRoute: ActivatedRoute, private router:Router) { this.task= new Task('','','');}
 
   ngOnInit() {
     this.task= new Task('','','');
@@ -37,6 +38,7 @@ export class TaskUpdateComponent implements OnInit {
     
     myItem.push(this.task)
     localStorage.setItem('tasks', JSON.stringify(myItem));
+    this.router.navigate(['/']);
 
   }
 
