@@ -31,9 +31,15 @@ export class TaskUpdateComponent implements OnInit {
     if(this.task.id===0){
       this.task.id=myItem.length;
     }else{
-      myItem = myItem.filter(function( obj ) {
-        return obj.id !== this.task.id;
-    })
+     
+    for (let index = 0; index < myItem.length; index++) {
+      const element = myItem[index];
+      if(element.id===this.task.id){
+        myItem.splice(index, 1);
+      }
+      
+    }
+
     }
     
     myItem.push(this.task)
@@ -41,8 +47,10 @@ export class TaskUpdateComponent implements OnInit {
     this.router.navigate(['/']);
 
   }
+  
 
 }
+
 
 class Task{
 
