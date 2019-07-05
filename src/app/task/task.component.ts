@@ -17,6 +17,16 @@ export class TaskComponent implements OnInit {
     this.tasks = myItem;
   }
 
+  public remove( id ){
+    
+    this.tasks = this.tasks.filter(function( obj ) {
+        return obj.id !== id;
+    })
+    
+    localStorage.setItem('tasks', JSON.stringify(this.tasks));
+
+  }
+
 }
 
 class Task{

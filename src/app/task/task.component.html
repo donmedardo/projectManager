@@ -29,7 +29,7 @@
                         </button>
                     </div>&nbsp;
                     <div class="btn-group flex-btn-group-container">
-                            <button type="submit" [routerLink]="['/taskUpdate']"[queryParams]="{task:task | json }"
+                            <button type="button" (click)="remove(task.id)" 
                                 class="btn btn-primary btn-sm">
                                 <span class="d-none d-md-inline">Borrar</span>
                             </button>

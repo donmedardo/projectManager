@@ -29,6 +29,10 @@ export class TaskUpdateComponent implements OnInit {
     let myItem:Task[] = localStorage.getItem('tasks')? JSON.parse(localStorage.getItem('tasks')):[];
     if(this.task.id===0){
       this.task.id=myItem.length;
+    }else{
+      myItem = myItem.filter(function( obj ) {
+        return obj.id !== this.task.id;
+    })
     }
     
     myItem.push(this.task)
